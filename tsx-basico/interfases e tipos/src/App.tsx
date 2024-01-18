@@ -1,12 +1,15 @@
-import React from "react"
-import Button from "./Button"
+import React from 'react';
+import Button from './Button';
 
 function App() {
+  const [total, setTotal] = React.useState(0);
+
   return (
     <div>
-      <Button>Incrementar</Button>
+      <p>Total: {total}</p>
+      <Button total={total} setTotal={setTotal} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

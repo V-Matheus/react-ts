@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const Button = ({children}: React.PropsWithChildren) => {
-
-  const handleClick: React.MouseEventHandler = (event) => {
-    console.log(event.pageX);
-  }
-
-  return (
-    <button onClick={handleClick}>{children}</button>
-  )
+type ButtonProps = {
+  total: number,
+  setTotal: React.Dispatch<React.SetStateAction<number>>
 }
 
-export default Button
+const Button = ({ total, setTotal }: ButtonProps) => {
+  return (
+    <button onClick={() => setTotal((t) => t + 1)}>Incrementar {total}</button>
+  );
+};
+
+export default Button;
