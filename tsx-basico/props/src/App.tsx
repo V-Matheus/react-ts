@@ -1,18 +1,17 @@
 import React from "react"
-import Button from "./Button"
+import Input from "./Input"
 
 function App() {
 
-  const [total,setTotal] = React.useState(0)
-
-  function incrementar() {
-    setTotal((total) => total + 1)
-  }
+  const [data, setData] = React.useState('')
 
   return (
     <div>
-      <p>Total: {total}</p> 
-      <Button id="botao-principal" className="btn" onClick={incrementar} tamanho='1.25rem'>Incrementar 2</Button>
+      <p>Início da Viagem: {data}</p>
+      <Input id="email" label="Email"/>
+      <Input id="nome" label="Nome"/>
+      <Input value={data} onChange={(event) => setData(event.currentTarget.value)} id="inicio" label="Início da Viagem" type="date"/>
+      <Input id="horario" label="Horário" type="time"/>
     </div>
   )
 }
