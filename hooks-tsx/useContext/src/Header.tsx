@@ -1,12 +1,15 @@
 import React from 'react'
-import { useUi } from './UiContext'
+import { useUser } from './useContext'
 
 const Header = () => {
 
-  const {setDark} = useUi()
-  
+  const {data} = useUser()
+
+  if(!data) return null
   return (
-    <button onClick={() => setDark((b) => !b)}>Mode</button>
+    <div>
+      {data.nome}
+    </div>
   )
 }
 
