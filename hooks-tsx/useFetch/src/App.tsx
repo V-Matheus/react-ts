@@ -12,12 +12,31 @@ type Produto = {
 
 function App() {
 
+  const [id,setId] = React.useState('p001')
+
   const produtos = useFetch<Produto[]>('https://data.origamid.dev/produtos/')
+  const produto = useFetch<Produto>(`https://data.origamid.dev/produtos/${id}`, {
+    cache: 'force-cache'
+  })
 
   return (
-    <div>
-      
-    </div>
+    <section className="flex">
+      <div>
+      {produtos.data && produtos.data.map(produto => <button onClick={() => setId(produto.id)} style={{fontSize: '1rem'}} key={produto.id} >{produto.id}</button>)}
+      </div>
+      <div>
+        {produto.loading && <div>Carregando...</div> }
+        {produto.data && 
+        <ul>
+          <li>ID: {produto.data.id}</li>
+          <li>NOME: {produto.data.nome}</li>
+          <li>DESCRIÇÃO: {produto.data.descricao}</li>
+          <li>QUANTIDADE: {produto.data.quantidade}</li>
+        </ul>}
+      </div>
+    </section>
+    
+   
   )
 }
 
